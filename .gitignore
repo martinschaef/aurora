@@ -88,5 +88,6 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# Ignore the device token.
+# Ignore the device token and url.
 aurora.token
+aurora.url

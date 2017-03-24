@@ -19,6 +19,8 @@ def pair_with_aurora():
     return
   with open("aurora.token", "w") as f:
     f.write(token)
+  with open("aurora.url", "w") as f:
+    f.write(base_url) 
   print ("Wrote token to aurora.token")
 
 if __name__ == "__main__":

@@ -7,17 +7,19 @@ from time import sleep
 
 class Aurora(object):
 
-  def __init__(self, token_file_name, fixed_url_string=None):
+  def __init__(self, token_file_name):
     if not os.path.isfile(token_file_name):
       raise Exception("token file not found: {}".format(token_file_name))
 
     with open(token_file_name, 'r') as f:
       token_string=f.read()
 
-    if fixed_url_string==None:
-      self.base_url = "{}/api/beta".format(ssdp.findAuroraURL())
+    if os.path.isfile("aurora.url"):
+      with open("aurora.url", 'r') as f:
+        self.base_url=f.read()
     else:
-      self.base_url = "{}/api/beta".format(fixed_url_string)
+      self.base_url = "{}/api/beta".format(ssdp.findAuroraURL())
+
     self.token = token_string
     self.auth_url = "{}/{}".format(self.base_url, token_string)
     self.state = self.get()
