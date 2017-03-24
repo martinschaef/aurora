@@ -22,8 +22,6 @@ class Aurora(object):
 
     self.token = token_string
     self.auth_url = "{}/{}".format(self.base_url, token_string)
-    self.state = self.get()
-    print self.state
 
   def __repr__(self):
     return "<Aurora({base_url}, {token})>".format(**self.__dict__)
@@ -50,7 +48,24 @@ if __name__ == "__main__":
   print "Some code to talk to an Aurora light. Remember to run pairing.py once to get the aurora.token file."
   aurora = Aurora("aurora.token")
   aurora.turnOn()
+  
+
+  data = {
+    "command" : "display",
+    "version" : "1.0",
+    "animType" : "static",
+    "animData" : "4 150 1 100 100 0 2 25 -29 240 3 174 -29 120 4 99 13 180",
+    "loop" : False
+  }
+
+  try:
+    aurora.put("write", data)
+  except:
+    print "failed"
+    pass
   sleep(3)
+  
+
   aurora.turnOn(False)
 
 
