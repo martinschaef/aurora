@@ -46,7 +46,7 @@ class Aurora(object):
 
 if __name__ == "__main__":
   print "Some code to talk to an Aurora light. Remember to run pairing.py once to get the aurora.token file."
-  aurora = Aurora("aurora.token", "http://192.168.1.10:16021")
+  aurora = Aurora("aurora.token")
   aurora.turnOn()
   sleep(3)
   aurora.turnOn(False)
